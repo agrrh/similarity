@@ -4,18 +4,19 @@ Tool to find similar snippets in files.
 
 Supposed to be ran as CI quality check to prevent copy-paste between files.
 
-# Installation
+# Usage
+
+As local program:
 
 ```
 git clone ...
-```
-
-# Usage
-
-Run with defaults:
-
-```
 python3 main.py /path/to/code
+```
+
+As docker container:
+
+```
+docker run --rm -ti -v $(pwd):/code agrrh/similarity
 ```
 
 # Configuration
