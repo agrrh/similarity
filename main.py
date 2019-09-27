@@ -11,6 +11,8 @@ if __name__ == '__main__':
 
     files = []
 
+    # TODO use argparse
+    # TODO add mode to diff 2 files
     try:
         path = sys.argv[1]
     except IndexError:
@@ -33,7 +35,7 @@ if __name__ == '__main__':
         for snippet_a in file_a.snippets:
             for file_b in files:
                 if (
-                    file_a == file_b or
+                    file_a == file_b or  # FIXME compare different snippets from one file
                     (file_a, file_b) in paired or
                     (file_b, file_a) in paired
                 ):
@@ -57,6 +59,7 @@ if __name__ == '__main__':
                 print('\r{}% ~{}/{}'.format(round(i / total * 100.0, 1), i, total), end='')
     print('')
 
+    # TODO move this to separate class
     failed = False
     for similar in similars:
         ratio = similar.get('ratio')
