@@ -53,14 +53,21 @@ if __name__ == '__main__':
             file_a, file_b = similar.get('files')
             snippet_a, snippet_b = similar.get('snippets')
 
-            print('# {}%\t{}\t{}'.format(ratio, file_a.path, file_b.path))
-            print('a\t{}'.format(snippet_a.data.replace('\n', '\na\t')))
-            print('#')
-            print('b\t{}'.format(snippet_b.data.replace('\n', '\nb\t')))
+            print('RATIO {}%'.format(ratio))
+            print('')
+            print('A {}'.format(file_a.path))
+            print('')
+            print('\t{}'.format(snippet_a.data.replace('\n', '\n\t')))
+            print('')
+            print('B {}'.format(file_b.path))
+            print('')
+            print('\t{}'.format(snippet_b.data.replace('\n', '\n\t')))
+            print('')
             print('')
 
     if not failed:
-        print('# Here\'s top {} similars for informational purposes'.format(config.similarity.get('topk')))
+        print('TOP{} similars for INFO purposes'.format(config.similarity.get('topk')))
+        print('')
 
         for similar in sorted(similars, key=lambda x: x.get('ratio', 0), reverse=True)[:config.similarity.get('topk')]:
             ratio = similar.get('ratio')
@@ -68,13 +75,19 @@ if __name__ == '__main__':
             file_a, file_b = similar.get('files')
             snippet_a, snippet_b = similar.get('snippets')
 
-            print('# {}%\t{}\t{}'.format(ratio, file_a.path, file_b.path))
-            print('a\t{}'.format(snippet_a.data.replace('\n', '\na\t')))
-            print('#')
-            print('b\t{}'.format(snippet_b.data.replace('\n', '\nb\t')))
+            print('RATIO {}%'.format(ratio))
+            print('')
+            print('A {}'.format(file_a.path))
+            print('')
+            print('\t{}'.format(snippet_a.data.replace('\n', '\n\t')))
+            print('')
+            print('B {}'.format(file_b.path))
+            print('')
+            print('\t{}'.format(snippet_b.data.replace('\n', '\n\t')))
+            print('')
             print('')
 
-        print('# Check passed')
+        print('OK, check passed')
     else:
-        print('# Check FAILED')
+        print('ERROR, check FAILED')
         sys.exit(1)

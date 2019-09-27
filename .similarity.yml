@@ -11,9 +11,9 @@ skip:
 
 # Snippet parser settings
 snippet:
-  lines_min: 3  # snippets not less than X lines
+  lines_min: 5  # snippets not less than X lines
 
 similarity:
   identical: true  # set to true to include actually identical snippets
   ratio_fail: 95
-  topk: 3  # how many top similars to display if check not failed
+  topk: 1  # how many top similars to display if check not failed
