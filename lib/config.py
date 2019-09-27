@@ -12,8 +12,9 @@ class Config(object):
         self.snippet['lines_min'] = self.snippet.get('lines_min', 3)
 
         self.similarity = kwargs.get('similarity', {})
-        self.snippet['identical'] = self.similarity.get('identical', True)
-        self.snippet['ratio_fail'] = self.similarity.get('ratio_fail', 99)
+        self.similarity['identical'] = self.similarity.get('identical', True)
+        self.similarity['ratio_fail'] = self.similarity.get('ratio_fail', 99)
+        self.similarity['topk'] = self.similarity.get('topk', 1)
 
     def local(self):
         path = './.similarity.yml'
