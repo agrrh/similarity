@@ -14,7 +14,10 @@ class File(object):
         '''
         Split file content into snippets
         '''
-        lines = self.content().split('\n')
+        try:
+            lines = self.content().split('\n')
+        except UnicodeDecodeError:
+            return None
 
         # Split content by empty lines into blocks
         blocks = []
