@@ -12,7 +12,8 @@ if __name__ == '__main__':
     files = []
 
     # TODO use argparse
-    # TODO add mode to diff 2 files
+    # TODO add command to diff 2 files
+    # TODO add summary flag
     try:
         path = sys.argv[1]
     except IndexError:
