@@ -11,13 +11,23 @@ if __name__ == '__main__':
 
     files = []
 
-    dir = Directory('./')
+    try:
+        path = sys.argv[1]
+    except IndexError:
+        path = ''
+
+    dir = Directory('./' + path)
     for file in dir.files_iter(config.skip):
         file.snippets = list(file.parse(config.snippet))
         files.append(file)
 
+    print('Analyzing content, please be patient ...')
+
     paired = []
     similars = []
+
+    total = sum([len(file.snippets) for file in files]) ** 2
+    i = 0
 
     for file_a in files:
         for snippet_a in file_a.snippets:
@@ -27,9 +37,11 @@ if __name__ == '__main__':
                     (file_a, file_b) in paired or
                     (file_b, file_a) in paired
                 ):
+                    i += len(file_b.snippets)
                     continue
 
                 for snippet_b in file_b.snippets:
+                    # TODO parallelism?
                     ratio = snippet_a.match_ratio(snippet_b)
 
                     similars.append({
@@ -38,7 +50,12 @@ if __name__ == '__main__':
                         'ratio': ratio
                     })
 
+                    i += 1
+
                 paired.append((file_a, file_b))
+
+                print('\r{}% ~{}/{}'.format(round(i / total * 100.0, 1), i, total), end='')
+    print('')
 
     failed = False
     for similar in similars:
