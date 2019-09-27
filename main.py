@@ -11,10 +11,17 @@ if __name__ == '__main__':
 
     files = []
 
-    dir = Directory('./')
+    try:
+        path = sys.argv[1]
+    except IndexError:
+        path = ''
+
+    dir = Directory('./' + path)
     for file in dir.files_iter(config.skip):
         file.snippets = list(file.parse(config.snippet))
         files.append(file)
+
+    print('Analyzing content, please be patient ...')
 
     paired = []
     similars = []
@@ -30,6 +37,7 @@ if __name__ == '__main__':
                     continue
 
                 for snippet_b in file_b.snippets:
+                    # TODO parallelism?
                     ratio = snippet_a.match_ratio(snippet_b)
 
                     similars.append({
