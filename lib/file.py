@@ -43,7 +43,7 @@ class File(object):
             else:
                 buf.append('')
 
-        while buf:
+        while buf and snippets:
             tmp = snippets.pop()
             tmp.extend([''] + buf[:-1])
             buf = tmp
