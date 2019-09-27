@@ -12,5 +12,4 @@ COPY ./ ./
 
 RUN mkdir /code
 
-ENTRYPOINT python3 main.py
-CMD /code
+CMD ["python3", "main.py", "/code"]
