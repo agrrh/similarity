@@ -60,7 +60,7 @@ if __name__ == '__main__':
     print('')
 
     # TODO move this to separate class
-    failed = False
+    failed = 0
     for similar in similars:
         ratio = similar.get('ratio')
 
@@ -68,7 +68,7 @@ if __name__ == '__main__':
             continue
 
         if ratio > config.similarity.get('ratio_fail'):
-            failed = True
+            failed += 1
 
             file_a, file_b = similar.get('files')
             snippet_a, snippet_b = similar.get('snippets')
@@ -85,7 +85,7 @@ if __name__ == '__main__':
             print('')
             print('')
 
-    if not failed:
+    if failed == 0:
         print('TOP{} similars for INFO purposes'.format(config.similarity.get('topk')))
         print('')
 
@@ -109,5 +109,5 @@ if __name__ == '__main__':
 
         print('OK, check passed')
     else:
-        print('ERROR, check FAILED')
+        print('ERROR, check FAILED for {} snippets'.format(failed))
         sys.exit(1)
