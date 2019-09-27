@@ -12,4 +12,6 @@ COPY ./ ./
 
 RUN mkdir /code
 
-CMD ["python3", "main.py", "/code"]
+ENV SIMILARITY_CODE_DIR /code
+
+CMD ["python3", "main.py", "${SIMILARITY_CODE_DIR}"]
