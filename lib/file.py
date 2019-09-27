@@ -16,6 +16,7 @@ class File(object):
         '''
         lines = self.content().split('\n')
 
+        # Split content by empty lines into blocks
         blocks = []
         block = []
         for line in lines:
@@ -32,7 +33,7 @@ class File(object):
 
         snippets = []
 
-        # From beginning
+        # Glue blocks together into snippets of satisfactory length
         buf = []
         for block in blocks:
             buf.extend(block)
@@ -43,6 +44,7 @@ class File(object):
             else:
                 buf.append('')
 
+        # Cleanup if there's still small piece in buffer
         while buf and snippets:
             tmp = snippets.pop()
             tmp.extend([''] + buf[:-1])
