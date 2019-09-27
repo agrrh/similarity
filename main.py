@@ -19,12 +19,14 @@ if __name__ == '__main__':
     except IndexError:
         path = ''
 
-    dir = Directory('./' + path)
+    dir = Directory(path or './')
     for file in dir.files_iter(config.skip):
         file.snippets = list(file.parse(config.snippet))
         files.append(file)
 
-    print('Analyzing content, please be patient ...')
+    print('Analyzing content of "{}"'.format(dir.path))
+    print('Satisfactory files found: {}'.format(len(files)))
+    print('Please be patient ...')
 
     paired = []
     similars = []
