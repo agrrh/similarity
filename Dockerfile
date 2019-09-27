@@ -10,8 +10,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 COPY ./ ./
 
+RUN chmod +x /app/main.py \
+  && ln -s /app/main.py /usr/local/bin/similarity
+
 RUN mkdir /code
 
 ENV SIMILARITY_CODE_DIR /code
 
-CMD ["python3", "main.py", "${SIMILARITY_CODE_DIR}"]
+ENTRYPOINT ["similarity"]
+CMD ["${SIMILARITY_CODE_DIR}"]
