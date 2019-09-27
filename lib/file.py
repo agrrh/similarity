@@ -38,14 +38,14 @@ class File(object):
         for block in blocks:
             buf.extend(block)
 
-            if len(buf) > config.get('lines_min'):
+            if len(blocks) == 1 or len(buf) > config.get('lines_min'):
                 snippets.append(buf)
                 buf = []
             else:
                 buf.append('')
 
         # Cleanup if there's still small piece in buffer
-        while buf and snippets:
+        while buf:
             tmp = snippets.pop()
             tmp.extend([''] + buf[:-1])
             buf = tmp
