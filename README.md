@@ -20,6 +20,10 @@ docker run --rm -ti -v $(pwd):/code agrrh/similarity
 docker run --rm -ti -v $(pwd):/code agrrh/similarity similarity /code/my/sub/dir
 ```
 
+### Demo
+
+[![ASCIInema preview](https://asciinema.org/a/zqphuGvECeJMcftydpPXHdN74.png)](https://asciinema.org/a/zqphuGvECeJMcftydpPXHdN74)
+
 # Configuration
 
 Configuration is possible with `.similarity.yml` in current directory:
