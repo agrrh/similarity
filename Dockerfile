@@ -15,4 +15,6 @@ RUN chmod +x /app/main.py \
 
 RUN mkdir /code
 
+WORKDIR /code
+
 CMD ["similarity", "/code"]
