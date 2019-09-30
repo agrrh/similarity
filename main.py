@@ -19,6 +19,8 @@ if __name__ == '__main__':
     except IndexError:
         path = ''
 
+    progress = '--progress' in sys.argv
+
     dir = Directory(path or './')
     for file in dir.files_iter(config.skip):
         file.snippets = list(file.parse(config.snippet))
@@ -59,7 +61,8 @@ if __name__ == '__main__':
 
                 paired.append((file_a, file_b))
 
-                print('\r{}% ~{}/{}'.format(round(i / total * 100.0, 1), i, total), end='')
+                if progress:
+                    print('\r{}% ~{}/{}'.format(round(i / total * 100.0, 1), i, total), end='')
     print('')
 
     # TODO move this to separate class
