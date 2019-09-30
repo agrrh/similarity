@@ -15,5 +15,4 @@ RUN chmod +x /app/main.py \
 
 RUN mkdir /code
 
-ENTRYPOINT ["similarity"]
-CMD ["/code"]
+CMD ["similarity", "/code"]

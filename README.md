@@ -17,7 +17,7 @@ As docker container:
 
 ```
 docker run --rm -ti -v $(pwd):/code agrrh/similarity
-docker run --rm -ti -v $(pwd):/code agrrh/similarity /code/my/sub/dir
+docker run --rm -ti -v $(pwd):/code agrrh/similarity similarity /code/my/sub/dir
 ```
 
 # Configuration
