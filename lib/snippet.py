@@ -1,7 +1,7 @@
 import difflib
 
 
-class Snippet(object):
+class Snippet():
     def __init__(self, **kwargs):
         self.data = kwargs.get('data')
 

@@ -1,7 +1,7 @@
 from lib.snippet import Snippet
 
 
-class File(object):
+class File():
     def __init__(self, path):
         self.path = path
         self.snippets = []

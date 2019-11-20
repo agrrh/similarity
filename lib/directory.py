@@ -3,7 +3,7 @@ import os
 from lib.file import File
 
 
-class Directory(object):
+class Directory():
     def __init__(self, path):
         self.path = path
 

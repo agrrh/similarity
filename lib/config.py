@@ -2,7 +2,7 @@ import os
 import yaml
 
 
-class Config(object):
+class Config():
     def __init__(self, **kwargs):
         self.skip = kwargs.get('skip', {})
         self.skip['paths'] = self.skip.get('paths', ('.git/', 'LICENSE.md'))
